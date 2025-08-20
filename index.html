@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="application-name" content="Sistema de Gestión">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Sistema de Gestión de Recursos</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <!-- Formulario de Login -->
+    <div id="login-section" class="login-container">
+        <div class="login-box">
+            <div class="logo-container">
+                <h1 class="shrine-logo">SHRINE</h1>
+            </div>
+            <h2>@Sougx.Sensi</h2>
+            
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Usuario" autocomplete="off">
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Contraseña" autocomplete="off">
+            </div>
+            
+            <button id="login-btn">Ingresar</button>
+            
+            <div id="error-message"></div>
+        </div>
+    </div>
+    
+    <!-- Contenido Principal (oculto inicialmente) -->
+    <div id="main-content" class="container" style="display: none;">
+        <div class="header">
+            <h1>SHRINE BY @SOUGX.SENSI</h1>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab">Aimbot</div>
+            <div class="tab">Config</div>
+            <div class="tab">Info</div>
+        </div>
+        
+        <div class="content" id="aimbot-content">
+            <div class="option">
+                <div class="checkbox"></div>
+                <span>Activar Shrine</span>
+            </div>
+            
+            <div class="option">
+                <div class="checkbox"></div>
+                <span>Activar Fov</span>
+            </div>
+            
+            <div class="slider">
+                <input type="range" min="1" max="100" value="50">
+                <span style="float: right;">Fov 50</span>
+            </div>
+            
+            <div class="option">
+                <select class="dropdown">
+                    <option>Auxiliar Head</option>
+                    <option>Auxiliar Neck</option>
+                    <option>Auxiliar Body</option>
+                </select>
+            </div>
+            
+            <div class="option">
+                <div class="radio selected"></div>
+                <span>AI Disparar</span>
+            </div>
+            
+            <div class="option">
+                <div class="radio"></div>
+                <span>AI Mirar</span>
+            </div>
+            
+            <button class="button">INJECTAR FUNCIONES EN EL JUEGO</button>
+        </div>
+        
+        <div class="content" id="config-content" style="display: none;">
+            <h2>Configuraciones Avanzadas</h2>
+            <div class="option">
+                <div class="checkbox"></div>
+                <span>Silent Aim</span>
+            </div>
+            
+            <div class="option">
+                <div class="checkbox"></div>
+                <span>Recoil Control</span>
+            </div>
+            
+            <div class="option">
+                <div class="checkbox"></div>
+                <span>Strafe Auto</span>
+            </div>
+        </div>
+        
+        <div class="content" id="info-content" style="display: none;">
+            <h2>INFO</h2>
+            <p>Shrine de mira diseñado por sougx. Usa el atajo para abrir Free Fire.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración de partículas
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#8A2BE2' // Color morado para las partículas
+                    },
+                    shape: {
+                        type: 'circle',
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#8A2BE2', // Color morado para las líneas
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                    }
+                },
+                retina_detect: true
+            });
+
+            // La funcionalidad de pestañas se ha movido al archivo script.js
+        });
+    </script>
+    <script>
+        // Registrar el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                }).catch(function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

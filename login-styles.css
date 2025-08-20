@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #000;
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 0;
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.login-box {
+    background-color: rgba(20, 20, 20, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+    width: 85%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.7); /* Borde morado brillante */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de borde morado brillante */
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #8A2BE2, #8A2BE2, #000, #000, #8A2BE2);
+    z-index: -1;
+    border-radius: 12px;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.logo-container {
+    margin-bottom: 15px;
+}
+
+.shrine-logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #8A2BE2; /* Color morado */
+    margin: 0;
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+    letter-spacing: 2px;
+}
+
+h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    color: white;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    background-color: #444;
+}
+
+#login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #8A2BE2; /* Botón morado */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#login-btn:hover {
+    background-color: #7B1FA2;
+}
+
+#error-message {
+    color: #8A2BE2;
+    margin-top: 15px;
+    display: none;
+    font-size: 14px;
+}
+
+/* Media queries para dispositivos móviles */
+@media screen and (max-width: 480px) {
+    .login-box {
+        width: 90%;
+        padding: 25px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    input, #login-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Media queries para dispositivos muy pequeños */
+@media screen and (max-width: 320px) {
+    .login-box {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .drive-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .input-group {
+        margin-bottom: 15px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media screen and (max-height: 450px) and (orientation: landscape) {
+    .login-box {
+        padding: 15px;
+    }
+    
+    .logo-container {
+        margin-bottom: 10px;
+    }
+    
+    .drive-logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .input-group {
+        margin-bottom: 10px;
+    }
+    
+    input, #login-btn {
+        padding: 8px;
+    }
+}

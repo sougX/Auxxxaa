@@ -1,0 +1,301 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #000;
+    color: white;
+    -webkit-tap-highlight-color: transparent; /* Elimina el resaltado al tocar en dispositivos móviles */
+    touch-action: manipulation; /* Mejora la respuesta táctil */
+}
+
+/* Oculta elementos de navegador */
+::-webkit-scrollbar {
+    display: none; /* Oculta barras de desplazamiento en WebKit */
+}
+
+/* Estilos para hacer que la aplicación parezca nativa */
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-user-select: none; /* Evita selección de texto */
+    -webkit-tap-highlight-color: transparent; /* Elimina el resaltado al tocar */
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 30px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Permite scroll vertical si el contenido es muy largo */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Estilos del botón de cerrar sesión eliminados */
+
+.header h1 {
+    font-size: clamp(18px, 5vw, 24px); /* Tamaño de fuente responsive */
+    margin: 0;
+    padding: 0;
+}
+
+.tabs {
+    display: flex;
+    width: 95%;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px 0;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 3px;
+    font-size: clamp(14px, 4vw, 16px); /* Tamaño de fuente responsive */
+    user-select: none; /* Evita selección de texto */
+}
+
+.tab.active {
+    background-color: white;
+    color: #333;
+}
+
+.tab {
+    background-color: #8A2BE2; /* Color morado por defecto para todas las pestañas */
+    color: white;
+}
+
+.tab:hover {
+    opacity: 0.9;
+}
+
+.content {
+    width: 95%;
+    max-width: 600px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: clamp(14px, 4vw, 16px); /* Tamaño de fuente responsive */
+}
+
+.checkbox {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    margin-right: 10px;
+    position: relative;
+    flex-shrink: 0; /* Evita que el checkbox se encoja */
+}
+
+.checkbox.checked {
+    background-color: #8A2BE2; /* Color morado */
+}
+
+.slider {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.dropdown {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.radio {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 10px;
+    position: relative;
+    flex-shrink: 0; /* Evita que el radio button se encoja */
+}
+
+.radio.selected:after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #8A2BE2; /* Color morado en lugar de rojo */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button {
+    width: 100%;
+    padding: 15px 0;
+    background-color: #8A2BE2; /* Color morado en lugar de rojo */
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: clamp(14px, 4vw, 16px); /* Tamaño de fuente responsive */
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 200px;
+    z-index: 2;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.dropdown-item.selected {
+    background-color: #8A2BE2; /* Color morado en lugar de rojo */
+}
+
+/* Borde morado en la parte superior */
+.container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #8A2BE2; /* Color morado en lugar de rojo */
+    z-index: 2;
+}
+
+/* Media queries para dispositivos móviles */
+@media screen and (max-width: 480px) {
+    .container {
+        padding-top: 20px;
+    }
+    
+    .header {
+        margin-bottom: 15px;
+    }
+    
+    .tabs {
+        margin-bottom: 10px;
+    }
+    
+    .tab {
+        padding: 10px 0;
+    }
+    
+    .option {
+        margin-bottom: 12px;
+    }
+    
+    .slider {
+        margin: 15px 0;
+    }
+    
+    .button {
+        margin-top: 15px;
+        padding: 12px 0;
+    }
+}
+
+/* Media queries para dispositivos muy pequeños */
+@media screen and (max-width: 320px) {
+    .container {
+        padding-top: 15px;
+    }
+    
+    .header h1 {
+        font-size: 16px;
+    }
+    
+    .tab {
+        padding: 8px 0;
+        margin: 0 2px;
+    }
+    
+    .checkbox, .radio {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .radio.selected:after {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media screen and (max-height: 450px) and (orientation: landscape) {
+    .container {
+        padding-top: 10px;
+    }
+    
+    .header {
+        margin-bottom: 10px;
+    }
+    
+    .tabs {
+        margin-bottom: 8px;
+    }
+    
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .option {
+        width: 48%;
+        margin-bottom: 8px;
+    }
+    
+    .slider {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
